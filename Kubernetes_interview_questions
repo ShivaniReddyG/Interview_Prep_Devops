@@ -1,0 +1,801 @@
+None selected 
+
+Skip to content
+Using Gmail with screen readers
+in:sent 
+5 of 368
+Devops interview questions
+Inbox
+
+Geggalapally Shivani <shivanireddyg168@gmail.com>
+Attachments
+Fri 22 May, 17:24 (7 days ago)
+to me
+
+
+ 6 attachment
+  •  Scanned by Gmail
+# Top 100 Kubernetes Interview Questions with Answers
+
+# Kubernetes Basics
+
+## 1. What is Kubernetes?
+
+Kubernetes is an open-source container orchestration platform used to automate deployment, scaling, and management of containerized applications.
+
+---
+
+## 2. Why is Kubernetes used?
+
+Kubernetes provides:
+
+* Auto scaling
+* High availability
+* Self-healing
+* Automated deployments
+* Service discovery
+
+---
+
+## 3. What problem does Kubernetes solve?
+
+It manages large-scale containerized applications efficiently across multiple servers.
+
+---
+
+## 4. Difference between Docker and Kubernetes?
+
+| Docker            | Kubernetes                  |
+| ----------------- | --------------------------- |
+| Container runtime | Container orchestration     |
+| Runs containers   | Manages containers at scale |
+
+---
+
+## 5. What is a Kubernetes cluster?
+
+A set of worker and control plane nodes managing container workloads.
+
+---
+
+## 6. What are the main components of Kubernetes architecture?
+
+* API Server
+* Scheduler
+* Controller Manager
+* etcd
+* Kubelet
+* Kube-proxy
+
+---
+
+## 7. What is a node?
+
+A machine (physical/virtual) running Kubernetes workloads.
+
+---
+
+## 8. What is a Pod?
+
+Smallest deployable unit in Kubernetes containing one or more containers.
+
+---
+
+## 9. Why are Pods ephemeral?
+
+Pods can be recreated anytime during failures or updates.
+
+---
+
+## 10. What is a container runtime?
+
+Software responsible for running containers.
+
+Examples:
+
+* containerd
+* CRI-O
+
+---
+
+# Kubernetes Architecture
+
+## 11. What is kube-apiserver?
+
+Central management component exposing Kubernetes APIs.
+
+---
+
+## 12. What is etcd?
+
+Distributed key-value store storing cluster state.
+
+---
+
+## 13. What is kube-scheduler?
+
+Assigns Pods to nodes.
+
+---
+
+## 14. What is kube-controller-manager?
+
+Runs controllers that maintain cluster desired state.
+
+---
+
+## 15. What is kubelet?
+
+Agent running on nodes communicating with API server.
+
+---
+
+## 16. What is kube-proxy?
+
+Handles networking and service forwarding.
+
+---
+
+## 17. Control plane vs worker node?
+
+| Control Plane   | Worker Node    |
+| --------------- | -------------- |
+| Manages cluster | Runs workloads |
+
+---
+
+## 18. What are controllers?
+
+Background loops ensuring desired state.
+
+---
+
+## 19. What is reconciliation loop?
+
+Kubernetes continuously compares desired vs actual state.
+
+---
+
+## 20. What is declarative configuration?
+
+Defining desired infrastructure/application state in YAML.
+
+---
+
+# Pods & Workloads
+
+## 21. What is a Deployment?
+
+Manages stateless applications and rolling updates.
+
+---
+
+## 22. What is ReplicaSet?
+
+Ensures specified number of pod replicas run.
+
+---
+
+## 23. What is StatefulSet?
+
+Used for stateful applications needing stable identities.
+
+Examples:
+
+* databases
+* Kafka
+
+---
+
+## 24. What is DaemonSet?
+
+Runs one pod per node.
+
+Example:
+
+* log collectors
+
+---
+
+## 25. What is Job?
+
+Runs batch task until completion.
+
+---
+
+## 26. What is CronJob?
+
+Runs scheduled jobs.
+
+Example:
+
+* backups
+
+---
+
+## 27. Difference between Deployment and StatefulSet?
+
+| Deployment       | StatefulSet       |
+| ---------------- | ----------------- |
+| Stateless        | Stateful          |
+| Random pod names | Stable identities |
+
+---
+
+## 28. What happens when Pod crashes?
+
+Kubernetes automatically recreates it.
+
+---
+
+## 29. How do you scale deployments?
+
+```bash id="phsy4k"
+kubectl scale deployment nginx --replicas=5
+```
+
+---
+
+## 30. How do rolling updates work?
+
+Pods are updated gradually with zero downtime.
+
+---
+
+# Networking
+
+## 31. What is a Service?
+
+Provides stable network access to Pods.
+
+---
+
+## 32. Types of Services?
+
+* ClusterIP
+* NodePort
+* LoadBalancer
+* ExternalName
+
+---
+
+## 33. What is ClusterIP?
+
+Default internal-only service type.
+
+---
+
+## 34. What is NodePort?
+
+Exposes service on node IP and static port.
+
+---
+
+## 35. What is LoadBalancer?
+
+Creates external load balancer using cloud provider.
+
+---
+
+## 36. What is Ingress?
+
+Manages external HTTP/HTTPS routing.
+
+---
+
+## 37. What is CoreDNS?
+
+Cluster DNS service.
+
+---
+
+## 38. How Pods communicate?
+
+Using flat pod network and DNS.
+
+---
+
+## 39. What is CNI?
+
+Container Network Interface plugin.
+
+Examples:
+
+* Calico
+* Flannel
+* Cilium
+
+---
+
+## 40. What are Network Policies?
+
+Rules controlling pod-to-pod communication.
+
+---
+
+# Storage
+
+## 41. What is Persistent Volume (PV)?
+
+Cluster storage resource.
+
+---
+
+## 42. What is Persistent Volume Claim (PVC)?
+
+Request for storage by applications.
+
+---
+
+## 43. Difference between PV and PVC?
+
+| PV             | PVC                 |
+| -------------- | ------------------- |
+| Actual storage | Request for storage |
+
+---
+
+## 44. What is StorageClass?
+
+Defines dynamic storage provisioning.
+
+---
+
+## 45. What is dynamic provisioning?
+
+Automatic creation of storage volumes.
+
+---
+
+## 46. What happens when Pod restarts?
+
+Ephemeral storage is lost unless persistent storage used.
+
+---
+
+## 47. What is ConfigMap?
+
+Stores non-sensitive configuration data.
+
+---
+
+## 48. What is Secret?
+
+Stores sensitive data.
+
+---
+
+## 49. Difference between ConfigMap and Secret?
+
+| ConfigMap  | Secret         |
+| ---------- | -------------- |
+| Plain text | Base64 encoded |
+
+---
+
+## 50. How do you mount Secrets?
+
+As:
+
+* environment variables
+* volumes
+
+---
+
+# Security
+
+## 51. What is RBAC?
+
+Role-Based Access Control for authorization.
+
+---
+
+## 52. What are Roles and RoleBindings?
+
+| Role                | RoleBinding         |
+| ------------------- | ------------------- |
+| Defines permissions | Assigns permissions |
+
+---
+
+## 53. What is ServiceAccount?
+
+Identity used by Pods.
+
+---
+
+## 54. What is namespace?
+
+Logical cluster isolation mechanism.
+
+---
+
+## 55. Why use namespaces?
+
+* environment separation
+* resource organization
+* multi-tenancy
+
+---
+
+## 56. What are security contexts?
+
+Define privilege/security settings for pods/containers.
+
+---
+
+## 57. What is PodSecurityPolicy?
+
+Deprecated mechanism controlling pod security.
+
+Replaced by Pod Security Admission.
+
+---
+
+## 58. What is imagePullPolicy?
+
+Controls image pulling behavior.
+
+Values:
+
+* Always
+* IfNotPresent
+* Never
+
+---
+
+## 59. How do you secure Kubernetes cluster?
+
+* RBAC
+* Network policies
+* Secrets management
+* TLS
+* Least privilege
+
+---
+
+## 60. How do you manage secrets securely?
+
+Use:
+
+* Kubernetes Secrets
+* Vault
+* External Secrets Operator
+
+---
+
+# Scheduling & Scaling
+
+## 61. What is HPA?
+
+Horizontal Pod Autoscaler automatically scales pods.
+
+---
+
+## 62. What metrics does HPA use?
+
+* CPU
+* Memory
+* Custom metrics
+
+---
+
+## 63. What is Cluster Autoscaler?
+
+Automatically scales nodes.
+
+---
+
+## 64. What are taints and tolerations?
+
+Control pod scheduling restrictions.
+
+---
+
+## 65. What are node selectors?
+
+Schedule pods on specific nodes.
+
+---
+
+## 66. What is affinity and anti-affinity?
+
+Rules controlling pod placement.
+
+---
+
+## 67. What is resource request?
+
+Minimum resource guaranteed.
+
+---
+
+## 68. What is resource limit?
+
+Maximum resource allowed.
+
+---
+
+## 69. What happens if memory limit exceeded?
+
+Container gets OOMKilled.
+
+---
+
+## 70. What is QoS class?
+
+Determines pod resource priority.
+
+---
+
+# Monitoring & Logging
+
+## 71. How do you monitor Kubernetes?
+
+Tools:
+
+* Prometheus
+* Grafana
+
+---
+
+## 72. How do you view pod logs?
+
+```bash id="l7e4cq"
+kubectl logs pod-name
+```
+
+---
+
+## 73. How to access running container?
+
+```bash id="whd2lf"
+kubectl exec -it pod-name -- bash
+```
+
+---
+
+## 74. What is liveness probe?
+
+Checks whether app is alive.
+
+---
+
+## 75. What is readiness probe?
+
+Checks whether app is ready for traffic.
+
+---
+
+## 76. Difference between liveness and readiness probes?
+
+| Liveness                    | Readiness                |
+| --------------------------- | ------------------------ |
+| Restart unhealthy container | Controls traffic routing |
+
+---
+
+## 77. What is startup probe?
+
+Checks slow-starting applications.
+
+---
+
+## 78. How do you debug pending pods?
+
+Commands:
+
+```bash id="14l8tx"
+kubectl describe pod
+kubectl get events
+```
+
+---
+
+## 79. How do you debug CrashLoopBackOff?
+
+Check:
+
+* logs
+* events
+* resource limits
+* application startup
+
+---
+
+## 80. Common kubectl troubleshooting commands
+
+```bash id="vf0dhq"
+kubectl get pods
+kubectl describe pod
+kubectl logs
+kubectl top pod
+```
+
+---
+
+# CI/CD & DevOps
+
+## 81. How is Kubernetes used in DevOps?
+
+Automates application deployment and scaling.
+
+---
+
+## 82. What is Helm?
+
+Package manager for Kubernetes.
+
+---
+
+## 83. What is Helm chart?
+
+Collection of Kubernetes manifests/templates.
+
+---
+
+## 84. What is GitOps?
+
+Managing infrastructure/application deployments using Git.
+
+Tools:
+
+* Argo CD
+* Flux
+
+---
+
+## 85. What is rolling deployment?
+
+Gradual replacement of old pods with new ones.
+
+---
+
+## 86. What is blue-green deployment?
+
+Two environments:
+
+* Blue → current
+* Green → new version
+
+---
+
+## 87. What is canary deployment?
+
+Small percentage traffic routed to new version first.
+
+---
+
+## 88. How does Kubernetes support high availability?
+
+* Multiple replicas
+* Self-healing
+* Load balancing
+
+---
+
+## 89. How do you update applications in Kubernetes?
+
+```bash id="sk3cq6"
+kubectl apply -f deployment.yaml
+```
+
+---
+
+## 90. How do you rollback deployment?
+
+```bash id="v3fq0x"
+kubectl rollout undo deployment nginx
+```
+
+---
+
+# Scenario-Based Questions
+
+## 91. Pod stuck in Pending state. What will you check?
+
+* Resource availability
+* Node selectors
+* Taints/tolerations
+* PVC issues
+* Scheduler events
+
+---
+
+## 92. Pod in CrashLoopBackOff. What will you do?
+
+Steps:
+
+1. Check logs
+2. Describe pod
+3. Validate configs/secrets
+4. Check resource limits
+5. Verify application startup
+
+---
+
+## 93. Service not accessible. What to check?
+
+* Service type
+* Endpoints
+* Pod labels/selectors
+* Network policies
+* Firewall/security groups
+
+---
+
+## 94. Node becomes NotReady. What will happen?
+
+Pods may be rescheduled to healthy nodes.
+
+---
+
+## 95. etcd failure impact?
+
+Cluster state becomes unavailable.
+
+---
+
+## 96. How do you backup Kubernetes cluster?
+
+Backup:
+
+* etcd
+* manifests
+* persistent volumes
+
+---
+
+## 97. How do you perform zero-downtime deployments?
+
+* Rolling updates
+* Readiness probes
+* Multiple replicas
+
+---
+
+## 98. Secret accidentally exposed. What steps?
+
+1. Rotate credentials
+2. Revoke compromised secrets
+3. Update Kubernetes secrets
+4. Audit access logs
+
+---
+
+## 99. Kubernetes best practices?
+
+* Use namespaces
+* Resource limits
+* RBAC
+* Health probes
+* GitOps
+* Monitoring
+
+---
+
+## 100. Limitations of Kubernetes?
+
+* Complexity
+* Steep learning curve
+* Operational overhead
+* Networking/storage challenges
+
+---
+
+# Frequently Used kubectl Commands
+
+```bash id="9vv03m"
+kubectl get pods
+kubectl get nodes
+kubectl describe pod pod-name
+kubectl logs pod-name
+kubectl exec -it pod-name -- bash
+kubectl apply -f deployment.yaml
+kubectl delete pod pod-name
+kubectl scale deployment app --replicas=3
+kubectl rollout status deployment app
+kubectl top pods
+```
+Kubernetes_interview_questions.txt
+Displaying Kubernetes_interview_questions.txt.
