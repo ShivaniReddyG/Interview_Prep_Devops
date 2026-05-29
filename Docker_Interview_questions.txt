@@ -1,0 +1,829 @@
+# Docker Interview Questions with Answers for DevOps Engineers
+
+## 1. What is Docker?
+
+Docker is an open-source containerization platform used to package applications and dependencies into lightweight containers.
+
+---
+
+## 2. What problem does Docker solve?
+
+Docker solves:
+
+* “Works on my machine” issues
+* Dependency conflicts
+* Environment inconsistency
+* Deployment portability
+
+---
+
+## 3. Docker vs Virtual Machines
+
+| Docker              | Virtual Machine     |
+| ------------------- | ------------------- |
+| Lightweight         | Heavy               |
+| Shares host kernel  | Separate OS         |
+| Fast startup        | Slow startup        |
+| Less resource usage | More resource usage |
+
+---
+
+## 4. What is containerization?
+
+Containerization packages application code and dependencies together to run consistently across environments.
+
+---
+
+## 5. What is a Docker image?
+
+A read-only template used to create containers.
+
+Example:
+
+```bash id="lhr1lt"
+docker pull nginx
+```
+
+---
+
+## 6. What is a Docker container?
+
+A running instance of a Docker image.
+
+---
+
+## 7. Image vs Container
+
+| Image    | Container        |
+| -------- | ---------------- |
+| Template | Running instance |
+| Static   | Dynamic          |
+
+---
+
+## 8. What is Docker Engine?
+
+Core Docker runtime consisting of:
+
+* Docker daemon
+* REST API
+* Docker CLI
+
+---
+
+## 9. Components of Docker Architecture
+
+* Docker Client
+* Docker Daemon
+* Docker Registry
+* Docker Objects
+
+---
+
+## 10. What is Docker Hub?
+
+Cloud registry for storing and sharing Docker images.
+
+Alternative registries:
+
+* Harbor
+* GitLab Container Registry
+
+---
+
+# Docker Architecture
+
+## 11. Docker client vs daemon
+
+| Client            | Daemon                    |
+| ----------------- | ------------------------- |
+| User interface    | Background service        |
+| Executes commands | Manages containers/images |
+
+---
+
+## 12. What is container runtime?
+
+Software responsible for running containers.
+
+Examples:
+
+* containerd
+* CRI-O
+
+---
+
+## 13. What is containerd?
+
+A container runtime managing container lifecycle.
+
+---
+
+## 14. What is runc?
+
+Low-level runtime used to create/run containers.
+
+---
+
+## 15. How Docker communicates with kernel?
+
+Using:
+
+* namespaces
+* cgroups
+* Linux kernel features
+
+---
+
+## 16. What are namespaces?
+
+Provide isolation for:
+
+* process IDs
+* network
+* filesystem
+* users
+
+---
+
+## 17. What are cgroups?
+
+Control resource usage:
+
+* CPU
+* memory
+* disk I/O
+
+---
+
+## 18. What is Union File System?
+
+Allows multiple layers to appear as single filesystem.
+
+---
+
+## 19. What is overlay2?
+
+Default Docker storage driver using layered filesystem.
+
+---
+
+## 20. What is Docker Registry?
+
+Storage system for Docker images.
+
+---
+
+# Docker Commands
+
+## 21. Install Docker on Linux
+
+```bash id="tk6nax"
+sudo apt install docker.io
+```
+
+---
+
+## 22. Check Docker version
+
+```bash id="w4omyl"
+docker --version
+```
+
+---
+
+## 23. Start/stop Docker service
+
+```bash id="jlwmvw"
+sudo systemctl start docker
+sudo systemctl stop docker
+```
+
+---
+
+## 24. `docker run` vs `docker start`
+
+| docker run       | docker start              |
+| ---------------- | ------------------------- |
+| Creates + starts | Starts existing container |
+
+---
+
+## 25. `docker create` vs `docker run`
+
+| create       | run                |
+| ------------ | ------------------ |
+| Only creates | Creates and starts |
+
+---
+
+## 26. Explain `docker ps`
+
+Shows running containers.
+
+```bash id="rw6v2t"
+docker ps
+```
+
+---
+
+## 27. Explain `docker images`
+
+Lists local images.
+
+---
+
+## 28. Remove containers/images
+
+```bash id="g74jvb"
+docker rm container-id
+docker rmi image-id
+```
+
+---
+
+## 29. What does `docker system prune` do?
+
+Removes unused:
+
+* containers
+* images
+* networks
+* cache
+
+---
+
+## 30. Inspect Docker objects
+
+```bash id="ku8lpz"
+docker inspect container-id
+```
+
+---
+
+# Docker Images
+
+## 31. What is Dockerfile?
+
+Text file containing image build instructions.
+
+---
+
+## 32. Explain image layers
+
+Each Dockerfile instruction creates a layer.
+
+Benefits:
+
+* caching
+* reuse
+* smaller downloads
+
+---
+
+## 33. Intermediate layers
+
+Temporary layers created during image build.
+
+---
+
+## 34. What is image caching?
+
+Docker reuses unchanged layers to speed builds.
+
+---
+
+## 35. COPY vs ADD
+
+| COPY             | ADD                          |
+| ---------------- | ---------------------------- |
+| Simple file copy | Supports URLs/tar extraction |
+
+Prefer COPY.
+
+---
+
+## 36. CMD vs ENTRYPOINT
+
+| CMD               | ENTRYPOINT      |
+| ----------------- | --------------- |
+| Default arguments | Main executable |
+
+---
+
+## 37. What is WORKDIR?
+
+Sets working directory inside container.
+
+---
+
+## 38. Purpose of EXPOSE
+
+Documents application port.
+
+---
+
+## 39. ENV instruction
+
+Sets environment variables.
+
+Example:
+
+```dockerfile id="3if2ix"
+ENV APP_ENV=production
+```
+
+---
+
+## 40. Reduce Docker image size
+
+* Use Alpine
+* Multi-stage builds
+* Remove caches
+* Minimize layers
+
+---
+
+# Dockerfile Best Practices
+
+## 41. Why use Alpine images?
+
+* Small size
+* Faster downloads
+* Reduced attack surface
+
+---
+
+## 42. What is multi-stage build?
+
+Uses multiple build stages to reduce final image size.
+
+Example:
+
+```dockerfile id="j8skud"
+FROM maven AS build
+FROM openjdk
+```
+
+---
+
+## 43. Why avoid running as root?
+
+Improves security and reduces privilege escalation risks.
+
+---
+
+## 44. Optimize Docker build performance
+
+* Layer caching
+* `.dockerignore`
+* Smaller contexts
+
+---
+
+## 45. What are dangling images?
+
+Unused images without tags.
+
+---
+
+## 46. What is `.dockerignore`?
+
+Excludes files from build context.
+
+Example:
+
+```bash id="ys9k7y"
+node_modules
+.git
+```
+
+---
+
+## 47. Pass variables during build
+
+```bash id="axifnf"
+docker build --build-arg VERSION=1.0 .
+```
+
+---
+
+## 48. ARG vs ENV
+
+| ARG           | ENV       |
+| ------------- | --------- |
+| Build-time    | Runtime   |
+| Not persisted | Persisted |
+
+---
+
+## 49. What is build context?
+
+Files accessible during Docker build.
+
+---
+
+## 50. Immutable infrastructure
+
+Containers are replaced, not modified.
+
+---
+
+# Docker Networking
+
+## 51. Explain Docker networking
+
+Enables communication:
+
+* container-to-container
+* container-to-host
+* external access
+
+---
+
+## 52. Types of Docker networks
+
+* bridge
+* host
+* overlay
+* none
+* macvlan
+
+---
+
+## 53. What is bridge network?
+
+Default private network for containers.
+
+---
+
+## 54. What is host network?
+
+Container shares host networking stack.
+
+---
+
+## 55. What is overlay network?
+
+Used in clustering across multiple hosts.
+
+---
+
+## 56. What is macvlan?
+
+Assigns MAC address to containers.
+
+---
+
+## 57. Container communication
+
+Containers communicate through Docker networks and DNS.
+
+---
+
+## 58. What is port mapping?
+
+Maps host port to container port.
+
+```bash id="7h3mhd"
+docker run -p 8080:80 nginx
+```
+
+---
+
+## 59. EXPOSE vs publish
+
+| EXPOSE        | Publish (-p)        |
+| ------------- | ------------------- |
+| Documentation | Actual port mapping |
+
+---
+
+## 60. Troubleshoot networking issues
+
+Commands:
+
+```bash id="i3f0ko"
+docker network ls
+docker inspect
+ping
+curl
+```
+
+---
+
+# Docker Volumes
+
+## 61. What is Docker volume?
+
+Persistent storage managed by Docker.
+
+---
+
+## 62. Bind mount vs volume
+
+| Bind Mount    | Volume         |
+| ------------- | -------------- |
+| Host path     | Docker-managed |
+| Less portable | More portable  |
+
+---
+
+## 63. What are tmpfs mounts?
+
+Temporary in-memory storage.
+
+---
+
+## 64. How volumes persist data?
+
+Data survives container deletion.
+
+---
+
+## 65. Backup Docker volumes
+
+```bash id="pwomjl"
+docker run --rm -v volume:/data busybox tar czf backup.tar /data
+```
+
+---
+
+## 66. What is volume driver?
+
+Plugin managing storage backend.
+
+---
+
+## 67. Share data between containers
+
+Mount same volume into multiple containers.
+
+---
+
+## 68. Explain storage drivers
+
+Manage image/container filesystem layers.
+
+---
+
+## 69. Clean unused volumes
+
+```bash id="14n6yc"
+docker volume prune
+```
+
+---
+
+## 70. What happens after container deletion?
+
+Container writable layer is removed unless data stored in volume.
+
+---
+
+# Docker Compose
+
+## 71. What is Docker Compose?
+
+Tool for managing multi-container applications.
+
+---
+
+## 72. Compose vs Swarm
+
+| Compose             | Swarm                 |
+| ------------------- | --------------------- |
+| Local orchestration | Cluster orchestration |
+
+---
+
+## 73. What is docker-compose.yml?
+
+Configuration file defining services/networks/volumes.
+
+---
+
+## 74. Explain services
+
+Each container/application defined in Compose.
+
+---
+
+## 75. Scale services
+
+```bash id="a1cn8q"
+docker compose up --scale web=3
+```
+
+---
+
+## 76. depends_on vs healthchecks
+
+| depends_on  | healthcheck       |
+| ----------- | ----------------- |
+| Start order | Service readiness |
+
+---
+
+## 77. Pass env variables in Compose
+
+Using `.env` file or environment section.
+
+---
+
+## 78. Named volumes
+
+Persistent reusable storage volumes.
+
+---
+
+## 79. Restart policies
+
+Examples:
+
+* always
+* unless-stopped
+* on-failure
+
+---
+
+## 80. Debug Compose apps
+
+Commands:
+
+```bash id="h0q9cs"
+docker compose logs
+docker compose ps
+```
+
+---
+
+# Docker Security
+
+## 81. Secure Docker containers
+
+* Least privilege
+* Non-root users
+* Image scanning
+* Secrets management
+
+---
+
+## 82. Risk of privileged containers
+
+Can access host resources and increase attack surface.
+
+---
+
+## 83. Docker content trust
+
+Verifies image authenticity using signatures.
+
+---
+
+## 84. What is image scanning?
+
+Detects vulnerabilities in images.
+
+Tools:
+
+* Trivy
+* Clair
+
+---
+
+## 85. Manage secrets securely
+
+Use:
+
+* Docker secrets
+* Vault
+* Kubernetes secrets
+
+---
+
+## 86. Docker Bench Security
+
+Checks Docker security best practices.
+
+---
+
+## 87. What are seccomp profiles?
+
+Restrict Linux syscalls for containers.
+
+---
+
+## 88. Docker capabilities
+
+Fine-grained Linux privileges for containers.
+
+---
+
+## 89. Limit container resources
+
+```bash id="0mbb0s"
+docker run --memory=512m --cpus=1 nginx
+```
+
+---
+
+## 90. Docker security best practices
+
+* Scan images
+* Use trusted registries
+* Limit permissions
+* Keep images updated
+
+---
+
+# Docker in DevOps
+
+## 91. Docker in CI/CD
+
+Docker provides:
+
+* consistent builds
+* isolated testing
+* reproducible deployments
+
+---
+
+## 92. Docker improves DevOps
+
+* Faster deployments
+* Environment consistency
+* Scalability
+* Easy rollback
+
+---
+
+## 93. What is Docker Swarm?
+
+Native Docker orchestration tool.
+
+---
+
+## 94. Swarm vs Kubernetes
+
+| Swarm      | Kubernetes   |
+| ---------- | ------------ |
+| Simple     | Advanced     |
+| Easy setup | Feature-rich |
+
+Kubernetes is industry standard.
+
+---
+
+## 95. Docker with Jenkins
+
+Jenkins builds, tests, and deploys containers automatically.
+
+---
+
+## 96. Blue-green deployment
+
+Two environments:
+
+* Blue → current
+* Green → new version
+
+Traffic switches after validation.
+
+---
+
+## 97. Rolling deployment
+
+Gradually replaces old containers with new ones.
+
+---
+
+## 98. Monitor Docker containers
+
+Tools:
+
+* Prometheus
+* Grafana
+* cAdvisor
+
+---
+
+## 99. Common troubleshooting commands
+
+```bash id="zd60v7"
+docker logs
+docker inspect
+docker exec
+docker stats
+```
+
+---
+
+## 100. Docker production best practices
+
+* Minimal images
+* Health checks
+* Resource limits
+* Centralized logging
+* Secure registries
+* Automated CI/CD pipelines

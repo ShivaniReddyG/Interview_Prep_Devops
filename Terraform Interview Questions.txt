@@ -1,0 +1,885 @@
+# Terraform Interview Questions with Answers
+
+## 1. What is Terraform?
+
+Terraform is an Infrastructure as Code (IaC) tool by HashiCorp used to provision and manage infrastructure using configuration files.
+
+---
+
+## 2. What is Infrastructure as Code (IaC)?
+
+IaC is the process of managing infrastructure using code instead of manual configuration.
+
+Benefits:
+
+* automation
+* consistency
+* version control
+* repeatability
+
+---
+
+## 3. Why is Terraform used in DevOps?
+
+Terraform helps:
+
+* automate infrastructure
+* maintain consistency
+* support CI/CD
+* enable multi-cloud deployments
+
+---
+
+## 4. Advantages of Terraform
+
+* Open source
+* Multi-cloud support
+* Declarative syntax
+* Reusable modules
+* State management
+
+---
+
+## 5. Terraform vs Ansible
+
+| Terraform              | Ansible                  |
+| ---------------------- | ------------------------ |
+| Provisioning tool      | Configuration management |
+| Declarative            | Procedural               |
+| Creates infrastructure | Configures servers       |
+
+Ansible is often used together with Terraform.
+
+---
+
+## 6. Terraform vs CloudFormation
+
+| Terraform     | CloudFormation |
+| ------------- | -------------- |
+| Multi-cloud   | AWS only       |
+| HCL syntax    | JSON/YAML      |
+| More flexible | AWS-native     |
+
+---
+
+## 7. Terraform architecture
+
+Components:
+
+* Terraform Core
+* Providers
+* State file
+* Plugins
+
+---
+
+## 8. What are providers?
+
+Plugins that interact with APIs.
+
+Examples:
+
+* AWS
+* Azure
+* GCP
+* Kubernetes
+
+---
+
+## 9. What is Terraform state?
+
+State file tracks real infrastructure resources managed by Terraform.
+
+---
+
+## 10. What is a Terraform resource?
+
+Infrastructure object managed by Terraform.
+
+Example:
+
+```hcl id="egfgcx"
+resource "aws_instance" "web" {
+  ami           = "ami-123"
+  instance_type = "t2.micro"
+}
+```
+
+---
+
+# Terraform Workflow
+
+## 11. Terraform workflow
+
+```bash id="t9vlbf"
+terraform init
+terraform plan
+terraform apply
+```
+
+---
+
+## 12. What does `terraform init` do?
+
+* Initializes working directory
+* Downloads providers/modules
+* Configures backend
+
+---
+
+## 13. What does `terraform plan` do?
+
+Shows execution plan before applying changes.
+
+---
+
+## 14. What does `terraform apply` do?
+
+Creates/modifies infrastructure.
+
+---
+
+## 15. What does `terraform destroy` do?
+
+Deletes managed infrastructure.
+
+---
+
+## 16. Purpose of `terraform validate`
+
+Validates syntax and configuration.
+
+---
+
+## 17. What is `terraform fmt`?
+
+Formats Terraform code according to standards.
+
+---
+
+## 18. What is `terraform refresh`?
+
+Updates state file with real infrastructure state.
+
+---
+
+## 19. What is `terraform output`?
+
+Displays output variables.
+
+---
+
+## 20. What is `terraform taint`?
+
+Marks resource for recreation.
+
+---
+
+# Terraform Configuration
+
+## 21. What is a `.tf` file?
+
+Terraform configuration file.
+
+---
+
+## 22. What is Terraform block?
+
+Defines required providers and version.
+
+Example:
+
+```hcl id="lsblq4"
+terraform {
+  required_version = ">= 1.0"
+}
+```
+
+---
+
+## 23. What are variables?
+
+Inputs used to parameterize configurations.
+
+---
+
+## 24. Variable types
+
+* string
+* number
+* bool
+* list
+* map
+* object
+
+---
+
+## 25. What are local values?
+
+Temporary reusable expressions.
+
+---
+
+## 26. What are output values?
+
+Expose important resource information.
+
+Example:
+
+```hcl id="rg5jdf"
+output "instance_ip" {
+  value = aws_instance.web.public_ip
+}
+```
+
+---
+
+## 27. What are data sources?
+
+Fetch existing infrastructure information.
+
+---
+
+## 28. What are modules?
+
+Reusable Terraform configurations.
+
+---
+
+## 29. Benefits of modules
+
+* Reusability
+* Standardization
+* Easier maintenance
+
+---
+
+## 30. Resource vs Data block
+
+| Resource               | Data                          |
+| ---------------------- | ----------------------------- |
+| Creates infrastructure | Reads existing infrastructure |
+
+---
+
+# State Management
+
+## 31. What is state file?
+
+`terraform.tfstate` stores infrastructure mappings.
+
+---
+
+## 32. Why is state important?
+
+Terraform uses state to determine changes required.
+
+---
+
+## 33. What if state file is deleted?
+
+Terraform loses tracking information.
+
+Recovery:
+
+* restore backup
+* import resources again
+
+---
+
+## 34. What is remote state?
+
+State stored remotely.
+
+Examples:
+
+* S3
+* Terraform Cloud
+
+---
+
+## 35. Benefits of remote backend
+
+* Collaboration
+* State locking
+* Centralized management
+
+---
+
+## 36. What is state locking?
+
+Prevents simultaneous Terraform operations.
+
+---
+
+## 37. What is backend?
+
+Defines where state is stored.
+
+---
+
+## 38. Local vs Remote backend
+
+| Local          | Remote             |
+| -------------- | ------------------ |
+| Stored locally | Stored remotely    |
+| Single-user    | Team collaboration |
+
+---
+
+## 39. How to secure Terraform state?
+
+* Encryption
+* Restricted access
+* Remote backend
+* Secrets management
+
+---
+
+## 40. Sensitive variables
+
+Prevent sensitive data exposure.
+
+Example:
+
+```hcl id="7cxm7x"
+sensitive = true
+```
+
+---
+
+# Advanced Concepts
+
+## 41. What is dependency?
+
+Terraform determines resource creation order.
+
+---
+
+## 42. Implicit vs Explicit dependencies
+
+| Implicit      | Explicit         |
+| ------------- | ---------------- |
+| Auto-detected | Defined manually |
+
+---
+
+## 43. What is `depends_on`?
+
+Explicit dependency declaration.
+
+Example:
+
+```hcl id="6cxmqa"
+depends_on = [aws_vpc.main]
+```
+
+---
+
+## 44. What is `count`?
+
+Creates multiple resources.
+
+---
+
+## 45. What is `for_each`?
+
+Creates resources using maps/sets.
+
+---
+
+## 46. count vs for_each
+
+| count         | for_each  |
+| ------------- | --------- |
+| Numeric index | Key-based |
+
+---
+
+## 47. Dynamic blocks
+
+Generate nested blocks dynamically.
+
+---
+
+## 48. What is interpolation?
+
+Embedding expressions in strings.
+
+---
+
+## 49. What are provisioners?
+
+Execute scripts during creation/destruction.
+
+---
+
+## 50. Why provisioners discouraged?
+
+* Non-idempotent
+* Hard to maintain
+* Better alternatives exist
+
+---
+
+# Modules
+
+## 51. Reusable infrastructure
+
+Standardized reusable components.
+
+---
+
+## 52. How to create modules?
+
+Place reusable code inside separate folder.
+
+---
+
+## 53. What is module registry?
+
+Repository of reusable modules.
+
+Example:
+
+* Terraform Registry
+
+---
+
+## 54. Child modules
+
+Modules called by another module.
+
+---
+
+## 55. Root modules
+
+Main working Terraform configuration.
+
+---
+
+## 56. Pass variables to modules
+
+```hcl id="jgk5o9"
+module "vpc" {
+  source = "./modules/vpc"
+  cidr   = "10.0.0.0/16"
+}
+```
+
+---
+
+## 57. Version Terraform modules
+
+Use Git tags or registry versions.
+
+---
+
+## 58. Module outputs
+
+Expose module values externally.
+
+---
+
+## 59. Module best practices
+
+* Keep modular
+* Document usage
+* Use versioning
+
+---
+
+## 60. How teams share modules?
+
+* Git repositories
+* Terraform Registry
+* Artifact repositories
+
+---
+
+# Cloud Providers
+
+## 61. Terraform with AWS
+
+Uses AWS provider APIs to create infrastructure.
+
+---
+
+## 62. Authentication with providers
+
+Methods:
+
+* Access keys
+* IAM roles
+* Service principals
+
+---
+
+## 63. IAM role usage
+
+Safer authentication without static credentials.
+
+---
+
+## 64. Deploy EC2 using Terraform
+
+```hcl id="a9mpu5"
+resource "aws_instance" "web" {
+  ami           = "ami-123"
+  instance_type = "t2.micro"
+}
+```
+
+---
+
+## 65. Create VPC
+
+Use:
+
+* aws_vpc
+* subnets
+* route tables
+
+---
+
+## 66. Manage Kubernetes
+
+Terraform can create clusters and Kubernetes resources.
+
+---
+
+## 67. Deploy Azure resources
+
+Using AzureRM provider.
+
+---
+
+## 68. Deploy GCP resources
+
+Using Google provider.
+
+---
+
+## 69. Multi-cloud deployment
+
+Managing multiple cloud providers together.
+
+---
+
+## 70. Provider aliases
+
+Used for multiple provider configurations.
+
+---
+
+# Security & Best Practices
+
+## 71. Secure Terraform code
+
+* Least privilege
+* Secret management
+* Code reviews
+* Encryption
+
+---
+
+## 72. Manage secrets
+
+Use:
+
+* Vault
+* AWS Secrets Manager
+* Environment variables
+
+---
+
+## 73. Avoid hardcoding credentials
+
+Prevents exposure and improves security.
+
+---
+
+## 74. What are workspaces?
+
+Manage multiple environments using same configuration.
+
+---
+
+## 75. Workspaces vs separate state files
+
+| Workspaces   | Separate States  |
+| ------------ | ---------------- |
+| Easier setup | Better isolation |
+
+---
+
+## 76. What is drift?
+
+Infrastructure changed outside Terraform.
+
+---
+
+## 77. Detect drift
+
+```bash id="g6jg9r"
+terraform plan
+```
+
+---
+
+## 78. Lifecycle rules
+
+Customize resource behavior.
+
+---
+
+## 79. What is `prevent_destroy`?
+
+Prevents accidental deletion.
+
+Example:
+
+```hcl id="ex2v6e"
+prevent_destroy = true
+```
+
+---
+
+## 80. What is `ignore_changes`?
+
+Ignores selected attribute changes.
+
+---
+
+# CI/CD & DevOps
+
+## 81. Terraform in CI/CD
+
+Automates infrastructure deployment pipelines.
+
+---
+
+## 82. Terraform in GitOps
+
+Infrastructure managed via Git repositories.
+
+---
+
+## 83. Automate Terraform deployments
+
+Using:
+
+* Jenkins
+* GitHub Actions
+* GitLab CI
+
+---
+
+## 84. Tools integrating with Terraform
+
+* Vault
+* Jenkins
+* Kubernetes
+* Ansible
+
+---
+
+## 85. What is Terraform Cloud?
+
+Managed SaaS platform by HashiCorp.
+
+---
+
+## 86. What is Terraform Enterprise?
+
+Enterprise version with governance/security features.
+
+---
+
+## 87. Terraform in Jenkins
+
+Pipeline stages:
+
+* init
+* validate
+* plan
+* apply
+
+---
+
+## 88. Terraform in GitHub Actions
+
+Automates deployments via GitHub workflows.
+
+---
+
+## 89. Approval workflows
+
+Manual approval before apply stage.
+
+---
+
+## 90. Policy as code
+
+Enforcing governance using policies.
+
+Example:
+
+* Sentinel
+
+---
+
+# Troubleshooting & Scenario-Based Questions
+
+## 91. Terraform apply failed. What will you do?
+
+Steps:
+
+1. Check error logs
+2. Run:
+
+```bash id="qj4n8w"
+terraform plan
+```
+
+3. Verify provider credentials
+4. Check resource conflicts
+5. Retry after fixing issues
+
+---
+
+## 92. State file corrupted. How to recover?
+
+* Restore backup state
+* Use remote backend versioning
+* Re-import resources if needed
+
+---
+
+## 93. Import existing resources
+
+```bash id="7wruxx"
+terraform import aws_instance.web i-123456
+```
+
+---
+
+## 94. What is `terraform import`?
+
+Imports existing infrastructure into Terraform state.
+
+---
+
+## 95. Debug Terraform issues
+
+Commands:
+
+```bash id="ry0mvr"
+terraform validate
+terraform plan
+TF_LOG=DEBUG terraform apply
+```
+
+---
+
+## 96. Two users apply simultaneously
+
+Issue:
+
+* State corruption risk
+
+Solution:
+
+* Remote backend
+* State locking using DynamoDB
+
+---
+
+## 97. Handle resource recreation
+
+Use lifecycle rules carefully.
+
+Example:
+
+```hcl id="jl6kdr"
+create_before_destroy = true
+```
+
+---
+
+## 98. Zero-downtime deployment
+
+Strategies:
+
+* Blue-green deployment
+* Rolling updates
+* create_before_destroy
+
+---
+
+## 99. Terraform best practices
+
+* Modular code
+* Remote backend
+* Version control
+* Least privilege
+* Separate environments
+
+---
+
+## 100. Terraform limitations
+
+* State management complexity
+* Limited configuration management
+* Large infrastructure performance issues
+
+---
+
+# Important Scenario-Based Answers
+
+## Secret accidentally committed
+
+Steps:
+
+1. Remove secret from repository
+2. Rotate credentials
+3. Rewrite Git history if needed
+4. Move secrets to Vault
+
+---
+
+## Infrastructure drift detected
+
+Steps:
+
+1. Run:
+
+```bash id="j0nqxu"
+terraform plan
+```
+
+2. Compare differences
+3. Reconcile infrastructure
+4. Apply updates carefully
+
+---
+
+## Terraform deployment failed midway
+
+Steps:
+
+1. Check partial resources
+2. Verify state consistency
+3. Run plan again
+4. Import missing resources if needed
+
+---
+
+## Multiple engineers working on same infrastructure
+
+Best practices:
+
+* Remote backend
+* State locking
+* Separate environments
+* Pull request approvals

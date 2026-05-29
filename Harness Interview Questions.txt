@@ -1,0 +1,752 @@
+# Top 100 Harness Interview Questions with Answers
+
+# Harness Fundamentals
+
+### 1. What is Harness?
+
+Harness is a modern CI/CD and DevOps platform used to automate software build, test, deployment, verification, and rollback processes.
+
+---
+
+### 2. What are the key features of Harness?
+
+* CI/CD automation
+* Continuous Verification
+* GitOps
+* Feature Flags
+* Cloud Cost Management
+* Security Testing
+* Automated Rollback
+
+---
+
+### 3. What problems does Harness solve?
+
+* Manual deployment errors
+* Slow release cycles
+* Lack of rollback automation
+* Deployment visibility issues
+* CI/CD complexity
+
+---
+
+### 4. Explain the architecture of Harness.
+
+Main components:
+
+* Harness Manager (SaaS platform)
+* Delegates
+* Connectors
+* Pipelines
+* Verification Engine
+
+---
+
+### 5. What are the modules available in Harness?
+
+* CI
+* CD
+* STO
+* SRM
+* CCM
+* Feature Flags
+* Chaos Engineering
+
+---
+
+### 6. Difference between Harness CI and Harness CD?
+
+| Harness CI                  | Harness CD            |
+| --------------------------- | --------------------- |
+| Build and test applications | Deploy applications   |
+| Generates artifacts         | Releases artifacts    |
+| Focuses on integration      | Focuses on deployment |
+
+---
+
+### 7. What is a Harness pipeline?
+
+A pipeline is an automated workflow consisting of stages and steps.
+
+---
+
+### 8. What are stages in Harness?
+
+Stages are logical deployment units like:
+
+* Build
+* Deploy
+* Approval
+* Security Scan
+
+---
+
+### 9. What are steps in Harness?
+
+Steps are individual tasks executed inside stages.
+
+Example:
+
+* Run script
+* Build Docker image
+* Deploy manifest
+
+---
+
+### 10. What are connectors in Harness?
+
+Connectors securely integrate external systems:
+
+* GitHub
+* Kubernetes
+* Docker Hub
+* AWS
+* Terraform
+
+---
+
+# Delegates & Infrastructure
+
+### 11. What is a Harness Delegate?
+
+A lightweight agent installed in infrastructure to execute deployment tasks securely.
+
+---
+
+### 12. Why is Delegate required?
+
+* Access private infrastructure
+* Execute deployments
+* Fetch secrets
+* Run scripts
+
+---
+
+### 13. Types of Delegates in Harness?
+
+* Kubernetes Delegate
+* Docker Delegate
+* Helm Delegate
+* ECS Delegate
+
+---
+
+### 14. How do you install a Delegate?
+
+Using:
+
+* Kubernetes YAML
+* Helm chart
+* Docker container
+
+---
+
+### 15. How does Delegate communicate with Harness Manager?
+
+Using outbound HTTPS connection over port 443.
+
+---
+
+### 16. What ports are required for Delegate communication?
+
+Typically:
+
+* 443 HTTPS
+* Cluster-specific ports if needed
+
+---
+
+### 17. How do you troubleshoot disconnected Delegates?
+
+Check:
+
+* Network connectivity
+* Proxy/firewall
+* Delegate pod status
+* Tokens
+* Logs
+
+---
+
+### 18. How do you scale Delegates?
+
+* Increase replicas
+* Use autoscaling
+* Deploy multiple Delegates
+
+---
+
+### 19. Explain Delegate selectors.
+
+Selectors map pipelines to specific Delegates.
+
+---
+
+### 20. What happens if a Delegate fails during deployment?
+
+Another eligible Delegate can pick up the task if redundancy exists.
+
+---
+
+# CI/CD Concepts
+
+### 21. Explain CI/CD in Harness.
+
+Harness automates:
+
+* Build
+* Test
+* Deploy
+* Verify
+* Rollback
+
+---
+
+### 22. How does Harness automate deployments?
+
+Using deployment pipelines and deployment strategies.
+
+---
+
+### 23. What deployment strategies are supported?
+
+* Rolling
+* Canary
+* Blue-Green
+
+---
+
+### 24. Explain Rolling deployment.
+
+Pods are updated gradually without downtime.
+
+---
+
+### 25. Explain Blue-Green deployment.
+
+Two environments exist:
+
+* Blue → Current
+* Green → New version
+
+Traffic switches after validation.
+
+---
+
+### 26. Explain Canary deployment.
+
+Deploy to a small subset of users before full rollout.
+
+---
+
+### 27. Difference between Blue-Green and Canary deployment?
+
+| Blue-Green              | Canary          |
+| ----------------------- | --------------- |
+| Full environment switch | Gradual rollout |
+| Faster rollback         | Better testing  |
+
+---
+
+### 28. What is Continuous Verification?
+
+Automated monitoring of deployment health.
+
+---
+
+### 29. What is Continuous Delivery?
+
+Software is always ready for release.
+
+---
+
+### 30. What is Continuous Deployment?
+
+Every successful build is automatically deployed.
+
+---
+
+# Kubernetes & Harness
+
+### 31. How does Harness integrate with Kubernetes?
+
+Using Kubernetes connectors and Delegates.
+
+---
+
+### 32. What Kubernetes resources can Harness manage?
+
+* Deployments
+* Services
+* ConfigMaps
+* Secrets
+* StatefulSets
+
+---
+
+### 33. Explain Kubernetes rolling updates in Harness.
+
+Pods are updated incrementally to avoid downtime.
+
+---
+
+### 34. How do you deploy Helm charts using Harness?
+
+* Add Helm repo
+* Configure manifests
+* Create deployment stage
+* Execute pipeline
+
+---
+
+### 35. Difference between Helm and Kustomize in Harness?
+
+| Helm            | Kustomize     |
+| --------------- | ------------- |
+| Template engine | Overlay-based |
+| Uses charts     | Uses patches  |
+
+---
+
+### 36. What is a Kubernetes connector?
+
+Connector used to authenticate and connect clusters.
+
+---
+
+### 37. How do you connect EKS cluster to Harness?
+
+Using:
+
+* IAM roles
+* Kubernetes connector
+* Delegate inside cluster
+
+---
+
+### 38. How do you connect AKS cluster to Harness?
+
+Using Azure credentials and Kubernetes connector.
+
+---
+
+### 39. How do you connect GKE cluster to Harness?
+
+Using GCP service account credentials.
+
+---
+
+### 40. What are Kubernetes manifests in Harness?
+
+YAML files defining Kubernetes resources.
+
+---
+
+# YAML & Pipeline as Code
+
+### 41. What is Pipeline as Code?
+
+Managing pipelines using YAML in Git.
+
+---
+
+### 42. Why use YAML pipelines?
+
+* Version control
+* Reusability
+* Automation
+
+---
+
+### 43. Explain runtime inputs in Harness.
+
+Values supplied during pipeline execution.
+
+---
+
+### 44. What are input sets?
+
+Reusable runtime input collections.
+
+---
+
+### 45. What are overlays in Harness?
+
+Environment-specific configuration overrides.
+
+---
+
+### 46. Explain stage templates.
+
+Reusable stage definitions.
+
+---
+
+### 47. Explain step templates.
+
+Reusable step configurations.
+
+---
+
+### 48. How do you version control pipelines?
+
+Store YAML in Git repositories.
+
+---
+
+### 49. What is Git Experience in Harness?
+
+Managing Harness entities directly from Git.
+
+---
+
+### 50. How do you validate YAML pipelines?
+
+Using Harness YAML validation and execution tests.
+
+---
+
+# Git & SCM Integration
+
+### 51. Which Git providers are supported?
+
+* GitHub
+* GitLab
+* Bitbucket
+* Azure Repos
+
+---
+
+### 52. How does Harness integrate with GitHub?
+
+Using GitHub connectors and webhooks.
+
+---
+
+### 53. How does Harness integrate with GitLab?
+
+Through GitLab API and repository connectors.
+
+---
+
+### 54. How do webhooks work in Harness?
+
+Git events trigger pipeline execution automatically.
+
+---
+
+### 55. Explain GitOps in Harness.
+
+Git acts as the source of truth for deployments.
+
+---
+
+### 56. What is GitOps Agent?
+
+Agent syncing Git state with Kubernetes clusters.
+
+---
+
+### 57. Difference between GitOps and traditional deployment?
+
+| GitOps      | Traditional       |
+| ----------- | ----------------- |
+| Git-driven  | Manual/CLI driven |
+| Declarative | Imperative        |
+
+---
+
+### 58. What repositories can be used in Harness?
+
+Git repositories and artifact repositories.
+
+---
+
+### 59. How do you trigger pipelines from Git commits?
+
+Using webhook triggers.
+
+---
+
+### 60. Explain branch-based deployment strategy.
+
+Different branches deploy to different environments.
+
+---
+
+# Artifacts & Registries
+
+### 61. What is an artifact in Harness?
+
+Deployable package like Docker image or JAR.
+
+---
+
+### 62. Which artifact repositories are supported?
+
+* Docker Hub
+* ECR
+* Nexus
+* Artifactory
+
+---
+
+### 63. Explain Docker artifact integration.
+
+Harness pulls Docker images during deployment.
+
+---
+
+### 64. How do you use ECR artifacts?
+
+Configure AWS connector and ECR repository.
+
+---
+
+### 65. How do you use Nexus artifacts?
+
+Add Nexus connector and artifact source.
+
+---
+
+### 66. What is artifact polling?
+
+Automatic detection of new artifact versions.
+
+---
+
+### 67. How do you configure artifact triggers?
+
+Using trigger configuration linked to artifact events.
+
+---
+
+### 68. Difference between Docker image and artifact?
+
+| Docker Image      | Artifact                |
+| ----------------- | ----------------------- |
+| Container package | Generic deployable file |
+
+---
+
+### 69. How does Harness store artifact metadata?
+
+Metadata stored in pipeline execution records.
+
+---
+
+### 70. Explain immutable artifacts.
+
+Artifacts cannot be modified after creation.
+
+---
+
+# Security & RBAC
+
+### 71. What security features are available in Harness?
+
+* RBAC
+* Secret encryption
+* Audit logs
+* Approval gates
+
+---
+
+### 72. Explain RBAC in Harness.
+
+Role-based permissions for users and teams.
+
+---
+
+### 73. How are secrets managed?
+
+Using secret managers and encrypted storage.
+
+---
+
+### 74. Which secret managers are supported?
+
+* HashiCorp Vault
+* AWS Secrets Manager
+* Azure Key Vault
+
+---
+
+### 75. Difference between encrypted text and file secrets?
+
+| Encrypted Text | File Secret    |
+| -------------- | -------------- |
+| Password/token | SSH keys/certs |
+
+---
+
+### 76. How do you integrate HashiCorp Vault?
+
+Using Vault connector and authentication settings.
+
+---
+
+### 77. How do you integrate AWS Secrets Manager?
+
+Using AWS connector with IAM permissions.
+
+---
+
+### 78. What are service accounts in Harness?
+
+Accounts used for automated infrastructure access.
+
+---
+
+### 79. How do approvals work in Harness?
+
+Manual or automated approval before deployment.
+
+---
+
+### 80. Explain policy enforcement in Harness.
+
+Policies enforce governance and compliance rules.
+
+---
+
+# Terraform & IaC
+
+### 81. How does Harness integrate with Terraform?
+
+Using Terraform Plan and Apply steps.
+
+---
+
+### 82. What Terraform steps are available?
+
+* Init
+* Plan
+* Apply
+* Destroy
+
+---
+
+### 83. Explain Terraform Plan and Apply stages.
+
+* Plan → Preview changes
+* Apply → Execute changes
+
+---
+
+### 84. How do you store Terraform state?
+
+Remote backends like S3 or Terraform Cloud.
+
+---
+
+### 85. Explain Infrastructure as Code in Harness.
+
+Infrastructure provisioning through automation scripts.
+
+---
+
+### 86. Difference between Terraform and CloudFormation?
+
+| Terraform   | CloudFormation |
+| ----------- | -------------- |
+| Multi-cloud | AWS only       |
+
+---
+
+### 87. How do you rollback Terraform deployments?
+
+Using previous state or destroy/apply.
+
+---
+
+### 88. What are provisioner steps in Harness?
+
+Steps that provision infrastructure resources.
+
+---
+
+### 89. Explain infrastructure provisioning in Harness.
+
+Automated creation of infrastructure before deployment.
+
+---
+
+### 90. How do you manage multiple environments?
+
+Using infrastructure definitions and variables.
+
+---
+
+# Monitoring & Verification
+
+### 91. Which monitoring tools integrate with Harness?
+
+* Prometheus
+* Datadog
+* Splunk
+* New Relic
+
+---
+
+### 92. Explain log verification.
+
+Analyze logs for deployment anomalies.
+
+---
+
+### 93. Explain metrics verification.
+
+Compare deployment metrics against baseline.
+
+---
+
+### 94. How does Harness perform anomaly detection?
+
+Using ML-based continuous verification.
+
+---
+
+### 95. What is Service Reliability Management?
+
+Monitoring service health and SLOs.
+
+---
+
+### 96. How does Harness integrate with Prometheus?
+
+Using Prometheus connectors and queries.
+
+---
+
+### 97. How does Harness integrate with Datadog?
+
+Using Datadog API keys and monitoring connectors.
+
+---
+
+### 98. Explain automatic rollback mechanism.
+
+Failed verification triggers rollback automatically.
+
+---
+
+### 99. How do you troubleshoot failed deployments?
+
+Check:
+
+* Pipeline logs
+* Delegate logs
+* Kubernetes events
+* Artifact versions
+
+---
+
+### 100. What are best practices for implementing Harness?
+
+* Use GitOps
+* Use templates
+* Enable RBAC
+* Configure rollback
+* Monitor deployments
+* Use reusable pipelines

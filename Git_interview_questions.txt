@@ -1,0 +1,543 @@
+ # Git Interview Questions with Answers for DevOps Engineers
+
+## 1. What is Git?
+
+Git is a distributed version control system used to track changes in source code and collaborate with multiple developers.
+
+---
+
+## 2. Difference between Git and GitHub?
+
+* **Git** → Version control tool.
+* **GitHub** → Cloud platform for hosting Git repositories.
+
+Other alternatives:
+
+* GitLab
+* Bitbucket
+
+---
+
+## 3. Explain Git workflow.
+
+Basic workflow:
+
+```bash
+git clone
+git checkout -b feature-branch
+git add .
+git commit -m "changes"
+git push origin feature-branch
+```
+
+Then create Pull Request → Review → Merge.
+
+---
+
+## 4. What is a repository?
+
+A repository is a storage location containing source code, commits, branches, and Git history.
+
+---
+
+## 5. Local repo vs Remote repo?
+
+| Local Repository            | Remote Repository      |
+| --------------------------- | ---------------------- |
+| Exists on developer machine | Hosted on server/cloud |
+| Used for development        | Used for collaboration |
+
+---
+
+## 6. What is the `.git` directory?
+
+It stores Git metadata:
+
+* commits
+* branches
+* logs
+* configuration
+
+---
+
+## 7. What is a commit?
+
+A commit is a snapshot of code changes with a unique commit ID.
+
+---
+
+## 8. Difference between `git fetch` and `git pull`?
+
+| git fetch              | git pull                 |
+| ---------------------- | ------------------------ |
+| Downloads changes only | Downloads + merges       |
+| Safer                  | Directly modifies branch |
+
+---
+
+## 9. Merge vs Rebase?
+
+| Merge             | Rebase                         |
+| ----------------- | ------------------------------ |
+| Preserves history | Creates cleaner linear history |
+| Adds merge commit | Rewrites history               |
+
+---
+
+## 10. Purpose of `git clone`
+
+Copies remote repository to local machine.
+
+```bash
+git clone <repo-url>
+```
+
+---
+
+# Branching & Merging
+
+## 11. What is a branch?
+
+A branch is an isolated line of development.
+
+---
+
+## 12. Create and switch branches
+
+```bash
+git checkout -b feature
+```
+
+or
+
+```bash
+git switch -c feature
+```
+
+---
+
+## 13. `checkout` vs `switch`
+
+* `checkout` → older command, handles branches/files.
+* `switch` → newer, branch-focused.
+
+---
+
+## 14. Feature branching strategy
+
+Each feature is developed in separate branch and merged after review.
+
+Example:
+
+```bash
+feature/login
+feature/payment
+```
+
+---
+
+## 15. What are merge conflicts?
+
+Conflicts happen when same lines are modified in multiple branches.
+
+Resolution:
+
+1. Open conflicted file
+2. Edit manually
+3. Add and commit
+
+```bash
+git add .
+git commit
+```
+
+---
+
+## 16. Fast-forward merge
+
+Git simply moves branch pointer forward without creating merge commit.
+
+---
+
+## 17. Squash merge vs normal merge
+
+| Squash Merge     | Normal Merge          |
+| ---------------- | --------------------- |
+| Combines commits | Preserves all commits |
+| Cleaner history  | Detailed history      |
+
+---
+
+## 18. Explain GitFlow
+
+GitFlow uses:
+
+* main
+* develop
+* feature/*
+* release/*
+* hotfix/*
+
+Good for release management.
+
+---
+
+## 19. What is trunk-based development?
+
+Developers frequently merge small changes into main branch.
+
+Used in modern DevOps pipelines.
+
+---
+
+## 20. When to use rebase?
+
+Use rebase for:
+
+* cleaner history
+* before PR creation
+* avoiding unnecessary merge commits
+
+---
+
+# Commits & History
+
+## 21. Amend last commit
+
+```bash
+git commit --amend
+```
+
+---
+
+## 22. reset vs revert vs restore
+
+| Command | Purpose              |
+| ------- | -------------------- |
+| reset   | Move HEAD            |
+| revert  | Undo with new commit |
+| restore | Restore files        |
+
+---
+
+## 23. What is cherry-pick?
+
+Copies specific commit from one branch to another.
+
+```bash
+git cherry-pick <commit-id>
+```
+
+---
+
+## 24. View commit history
+
+```bash
+git log
+```
+
+---
+
+## 25. Purpose of `git log --oneline --graph`
+
+Shows compact graphical commit history.
+
+---
+
+## 26. Remove tracked file but keep locally
+
+```bash
+git rm --cached file.txt
+```
+
+---
+
+## 27. What is `.gitignore`?
+
+Prevents unwanted files from tracking.
+
+Example:
+
+```bash
+node_modules/
+*.log
+.env
+```
+
+---
+
+## 28. Soft, mixed, hard reset
+
+| Reset Type | Keeps Changes | Keeps Staging |
+| ---------- | ------------- | ------------- |
+| soft       | Yes           | Yes           |
+| mixed      | Yes           | No            |
+| hard       | No            | No            |
+
+---
+
+## 29. Recover deleted commits
+
+Use reflog:
+
+```bash
+git reflog
+git checkout <commit-id>
+```
+
+---
+
+## 30. What is HEAD?
+
+HEAD points to current branch/latest commit.
+
+---
+
+# Remote Repositories
+
+## 31. Add remote repository
+
+```bash
+git remote add origin <url>
+```
+
+---
+
+## 32. What is origin?
+
+Default remote repository name.
+
+---
+
+## 33. Push changes
+
+```bash
+git push origin main
+```
+
+---
+
+## 34. Delete remote branch
+
+```bash
+git push origin --delete branch-name
+```
+
+---
+
+## 35. What is upstream tracking?
+
+Links local branch with remote branch.
+
+```bash
+git push -u origin main
+```
+
+---
+
+## 36. What is Pull Request?
+
+Code review mechanism before merging code.
+
+Platforms:
+
+* GitHub
+* GitLab
+
+---
+
+## 37. Resolve PR conflicts
+
+1. Pull latest changes
+2. Fix conflicts locally
+3. Commit
+4. Push again
+
+---
+
+## 38. What is force push?
+
+```bash
+git push --force
+```
+
+Overwrites remote history. Dangerous in shared branches.
+
+---
+
+## 39. What are tags?
+
+Used to mark releases.
+
+Example:
+
+```bash
+git tag v1.0
+```
+
+---
+
+## 40. Lightweight vs Annotated tags
+
+| Lightweight    | Annotated                |
+| -------------- | ------------------------ |
+| Simple pointer | Stores metadata          |
+| Less info      | Recommended for releases |
+
+---
+
+# DevOps & Advanced Git
+
+## 41. Git in CI/CD?
+
+Git triggers automated:
+
+* builds
+* tests
+* deployments
+
+Tools:
+
+* Jenkins
+* GitHub Actions
+* Azure DevOps
+
+---
+
+## 42. Best branching strategy for DevOps?
+
+Usually:
+
+* trunk-based development
+* short-lived feature branches
+
+Improves deployment speed.
+
+---
+
+## 43. How to manage secrets?
+
+Never store secrets in Git.
+
+Use:
+
+* Vault
+* Kubernetes secrets
+* environment variables
+
+---
+
+## 44. What are Git hooks?
+
+Scripts triggered during Git events.
+
+Examples:
+
+* pre-commit
+* post-merge
+
+---
+
+## 45. Pre-commit vs Post-commit hooks
+
+| Hook        | Usage                  |
+| ----------- | ---------------------- |
+| pre-commit  | Validate before commit |
+| post-commit | Notifications/logging  |
+
+---
+
+## 46. Handling large binary files
+
+Use:
+
+* Git LFS
+* artifact repositories
+
+---
+
+## 47. What is Git LFS?
+
+Git Large File Storage manages large files efficiently.
+
+---
+
+## 48. Troubleshooting failed merge/rebase
+
+Commands:
+
+```bash
+git status
+git diff
+git rebase --abort
+git merge --abort
+```
+
+---
+
+## 49. Secure Git repositories
+
+Best practices:
+
+* MFA
+* branch protection
+* least privilege access
+* signed commits
+
+---
+
+## 50. Git best practices in production
+
+* Use pull requests
+* Protect main branch
+* Small commits
+* Meaningful commit messages
+* Automate CI/CD
+* Use tags/releases
+* Regular backups
+
+---
+
+# Important Scenario-Based Answers
+
+## Developer accidentally force-pushed to main branch
+
+Steps:
+
+1. Use reflog/history
+2. Identify correct commit
+3. Restore branch
+4. Restrict force pushes
+
+---
+
+## Secret/API key committed
+
+Steps:
+
+1. Revoke secret immediately
+2. Remove from Git history
+3. Rotate credentials
+4. Add secret scanning
+
+---
+
+## CI/CD pipeline failing after merge
+
+Check:
+
+* pipeline logs
+* dependency versions
+* environment variables
+* test failures
+* syntax issues
+
+---
+
+## Best Git practices for teams
+
+* Feature branches
+* Mandatory code reviews
+* Branch protection
+* CI validation
+* Semantic versioning

@@ -1,0 +1,718 @@
+# Top 100 Amazon Web Services Interview Questions for DevOps & Cloud Engineers
+
+# AWS Fundamentals
+
+### 1. What is AWS?
+
+AWS is a cloud computing platform that provides services like compute, storage, networking, databases, security, and DevOps tools.
+
+---
+
+### 2. What are the benefits of AWS?
+
+* Scalability
+* High availability
+* Pay-as-you-go pricing
+* Global infrastructure
+* Security
+* Automation
+
+---
+
+### 3. What is a Region in AWS?
+
+A geographical area containing multiple Availability Zones.
+
+---
+
+### 4. What is an Availability Zone?
+
+An isolated data center within a Region.
+
+---
+
+### 5. Difference between Region and Availability Zone?
+
+| Region              | Availability Zone         |
+| ------------------- | ------------------------- |
+| Geographic location | Data center within region |
+| Multiple AZs        | Physically isolated       |
+
+---
+
+### 6. What is an Edge Location?
+
+AWS CDN locations used by CloudFront for content caching.
+
+---
+
+### 7. What is IAM?
+
+Identity and Access Management service used to control AWS access securely.
+
+---
+
+### 8. Difference between IAM Role and IAM User?
+
+| IAM User           | IAM Role                  |
+| ------------------ | ------------------------- |
+| Permanent identity | Temporary permissions     |
+| Login credentials  | Assumed by services/users |
+
+---
+
+### 9. What is a Security Group?
+
+Virtual firewall controlling inbound and outbound traffic.
+
+---
+
+### 10. Difference between Security Group and NACL?
+
+| Security Group | NACL         |
+| -------------- | ------------ |
+| Instance level | Subnet level |
+| Stateful       | Stateless    |
+
+---
+
+# EC2 (Elastic Compute Cloud)
+
+### 11. What is EC2?
+
+Virtual server service in AWS.
+
+---
+
+### 12. Types of EC2 instances?
+
+* General Purpose
+* Compute Optimized
+* Memory Optimized
+* Storage Optimized
+* GPU Instances
+
+---
+
+### 13. What is AMI?
+
+Amazon Machine Image used to launch EC2 instances.
+
+---
+
+### 14. Difference between EBS and Instance Store?
+
+| EBS              | Instance Store      |
+| ---------------- | ------------------- |
+| Persistent       | Temporary           |
+| Network attached | Physically attached |
+
+---
+
+### 15. What is Auto Scaling?
+
+Automatically adjusts EC2 instances based on load.
+
+---
+
+### 16. What is an Elastic IP?
+
+Static public IPv4 address.
+
+---
+
+### 17. What is Load Balancer?
+
+Distributes traffic across multiple targets.
+
+---
+
+### 18. Types of Load Balancers?
+
+* ALB
+* NLB
+* CLB
+* GWLB
+
+---
+
+### 19. Difference between ALB and NLB?
+
+| ALB        | NLB     |
+| ---------- | ------- |
+| Layer 7    | Layer 4 |
+| HTTP/HTTPS | TCP/UDP |
+
+---
+
+### 20. How do you secure EC2 instances?
+
+* Security Groups
+* IAM roles
+* Patching
+* SSH key authentication
+* Disable root login
+
+---
+
+# S3 (Simple Storage Service)
+
+### 21. What is S3?
+
+Object storage service.
+
+---
+
+### 22. What are S3 storage classes?
+
+* Standard
+* IA
+* One Zone IA
+* Glacier
+* Glacier Deep Archive
+
+---
+
+### 23. What is versioning in S3?
+
+Maintains multiple versions of objects.
+
+---
+
+### 24. What is lifecycle policy in S3?
+
+Automates object transition and deletion.
+
+---
+
+### 25. Difference between S3 and EBS?
+
+| S3              | EBS             |
+| --------------- | --------------- |
+| Object storage  | Block storage   |
+| Unlimited scale | Attached to EC2 |
+
+---
+
+### 26. What is multipart upload?
+
+Large file upload in chunks.
+
+---
+
+### 27. What is S3 replication?
+
+Automatic copying between buckets/regions.
+
+---
+
+### 28. What is a pre-signed URL?
+
+Temporary secure access URL.
+
+---
+
+### 29. How do you secure S3 buckets?
+
+* Bucket policies
+* IAM policies
+* Encryption
+* Block public access
+
+---
+
+### 30. Difference between SSE-S3 and SSE-KMS?
+
+| SSE-S3           | SSE-KMS          |
+| ---------------- | ---------------- |
+| AWS managed keys | KMS managed keys |
+
+---
+
+# VPC & Networking
+
+### 31. What is VPC?
+
+Virtual Private Cloud for isolated networking.
+
+---
+
+### 32. What is a subnet?
+
+Logical subdivision of VPC.
+
+---
+
+### 33. Difference between public and private subnet?
+
+| Public          | Private            |
+| --------------- | ------------------ |
+| Internet access | No direct internet |
+
+---
+
+### 34. What is an Internet Gateway?
+
+Enables internet access for VPC.
+
+---
+
+### 35. What is NAT Gateway?
+
+Allows private subnet outbound internet access.
+
+---
+
+### 36. What is route table?
+
+Defines traffic routing rules.
+
+---
+
+### 37. What is VPC Peering?
+
+Connects two VPCs privately.
+
+---
+
+### 38. Difference between Security Group and NACL?
+
+Security Group is stateful; NACL is stateless.
+
+---
+
+### 39. What is Direct Connect?
+
+Dedicated private AWS network connection.
+
+---
+
+### 40. What is Transit Gateway?
+
+Central hub connecting multiple VPCs.
+
+---
+
+# Databases
+
+### 41. What is RDS?
+
+Managed relational database service.
+
+---
+
+### 42. Supported RDS engines?
+
+* MySQL
+* PostgreSQL
+* MariaDB
+* Oracle
+* SQL Server
+
+---
+
+### 43. Difference between RDS and DynamoDB?
+
+| RDS          | DynamoDB        |
+| ------------ | --------------- |
+| Relational   | NoSQL           |
+| Fixed schema | Flexible schema |
+
+---
+
+### 44. What is DynamoDB?
+
+Managed NoSQL database.
+
+---
+
+### 45. What is Aurora?
+
+High-performance AWS relational database.
+
+---
+
+### 46. What is Multi-AZ deployment?
+
+Database replication for high availability.
+
+---
+
+### 47. What is Read Replica?
+
+Read-only copy of database.
+
+---
+
+### 48. Difference between Multi-AZ and Read Replica?
+
+| Multi-AZ | Read Replica |
+| -------- | ------------ |
+| HA       | Read scaling |
+
+---
+
+### 49. What is ElastiCache?
+
+Managed Redis/Memcached service.
+
+---
+
+### 50. What is Redshift?
+
+AWS data warehouse solution.
+
+---
+
+# DevOps & Automation
+
+### 51. What is CloudFormation?
+
+Infrastructure as Code service.
+
+---
+
+### 52. What are CloudFormation stacks?
+
+Collection of AWS resources managed together.
+
+---
+
+### 53. Difference between CloudFormation and Terraform?
+
+| CloudFormation | Terraform   |
+| -------------- | ----------- |
+| AWS native     | Multi-cloud |
+
+---
+
+### 54. What is CodePipeline?
+
+CI/CD orchestration service.
+
+---
+
+### 55. What is CodeBuild?
+
+Managed build service.
+
+---
+
+### 56. What is CodeDeploy?
+
+Automated deployment service.
+
+---
+
+### 57. What is Systems Manager?
+
+Centralized operations management service.
+
+---
+
+### 58. What is Parameter Store?
+
+Secure configuration storage service.
+
+---
+
+### 59. What is Secrets Manager?
+
+Secure secret management service.
+
+---
+
+### 60. What is Elastic Beanstalk?
+
+Platform as a Service for application deployment.
+
+---
+
+# Monitoring & Logging
+
+### 61. What is CloudWatch?
+
+Monitoring and logging service.
+
+---
+
+### 62. What are CloudWatch metrics?
+
+Performance measurements for AWS resources.
+
+---
+
+### 63. What are CloudWatch alarms?
+
+Alerts based on thresholds.
+
+---
+
+### 64. What is CloudTrail?
+
+Tracks AWS API activity.
+
+---
+
+### 65. Difference between CloudWatch and CloudTrail?
+
+| CloudWatch | CloudTrail |
+| ---------- | ---------- |
+| Monitoring | Auditing   |
+
+---
+
+### 66. What is AWS Config?
+
+Tracks resource configuration changes.
+
+---
+
+### 67. What is X-Ray?
+
+Distributed tracing service.
+
+---
+
+### 68. What is SNS?
+
+Notification service.
+
+---
+
+### 69. What is SQS?
+
+Message queue service.
+
+---
+
+### 70. Difference between SNS and SQS?
+
+| SNS     | SQS   |
+| ------- | ----- |
+| Push    | Pull  |
+| Pub/Sub | Queue |
+
+---
+
+# Containers & Kubernetes
+
+### 71. What is ECS?
+
+Elastic Container Service.
+
+---
+
+### 72. What is EKS?
+
+Managed Kubernetes service.
+
+---
+
+### 73. Difference between ECS and EKS?
+
+| ECS        | EKS              |
+| ---------- | ---------------- |
+| AWS-native | Kubernetes-based |
+
+---
+
+### 74. What is Fargate?
+
+Serverless container execution.
+
+---
+
+### 75. What is ECR?
+
+Elastic Container Registry.
+
+---
+
+### 76. How do you deploy Docker containers on AWS?
+
+Using ECS/EKS/Fargate.
+
+---
+
+### 77. What is service discovery in ECS?
+
+Automatic service endpoint registration.
+
+---
+
+### 78. What is task definition in ECS?
+
+Blueprint for container execution.
+
+---
+
+### 79. What is an EKS node group?
+
+Group of worker nodes.
+
+---
+
+### 80. How do you secure EKS clusters?
+
+* IAM roles
+* RBAC
+* Network policies
+* Private endpoints
+
+---
+
+# Security
+
+### 81. What is KMS?
+
+Key Management Service.
+
+---
+
+### 82. What is AWS Shield?
+
+DDoS protection service.
+
+---
+
+### 83. What is AWS WAF?
+
+Web Application Firewall.
+
+---
+
+### 84. What is GuardDuty?
+
+Threat detection service.
+
+---
+
+### 85. What is Inspector?
+
+Security vulnerability scanning service.
+
+---
+
+### 86. What is Macie?
+
+Data security and classification service.
+
+---
+
+### 87. Explain Shared Responsibility Model.
+
+AWS secures cloud infrastructure; customer secures workloads and data.
+
+---
+
+### 88. What is MFA?
+
+Multi-factor authentication.
+
+---
+
+### 89. What is least privilege access?
+
+Minimum required permissions principle.
+
+---
+
+### 90. How do you secure AWS accounts?
+
+* MFA
+* IAM roles
+* SCPs
+* CloudTrail
+* Encryption
+
+---
+
+# Scenario-Based Questions
+
+### 91. EC2 instance is unreachable. How do you troubleshoot?
+
+* Check SG/NACL
+* Verify instance status
+* Review route tables
+* Check SSH keys
+* Inspect logs
+
+---
+
+### 92. Website is slow in AWS. What will you check?
+
+* CPU/memory
+* ALB metrics
+* DB latency
+* CloudWatch metrics
+* Auto Scaling
+
+---
+
+### 93. S3 bucket accidentally became public. What will you do?
+
+* Remove public policy
+* Enable block public access
+* Audit permissions
+
+---
+
+### 94. How do you implement highly available architecture?
+
+* Multi-AZ
+* Load balancers
+* Auto Scaling
+* Replication
+
+---
+
+### 95. How do you reduce AWS costs?
+
+* Right sizing
+* Spot instances
+* Savings plans
+* S3 lifecycle policies
+
+---
+
+### 96. How do you migrate on-premises applications to AWS?
+
+* Rehost
+* Replatform
+* Refactor
+
+---
+
+### 97. How do you design disaster recovery in AWS?
+
+* Backups
+* Multi-region replication
+* Failover automation
+
+---
+
+### 98. How do you secure secrets in CI/CD pipelines?
+
+Use:
+
+* Secrets Manager
+* Parameter Store
+* IAM roles
+
+---
+
+### 99. Explain blue-green deployment in AWS.
+
+Two production environments with traffic switching.
+
+---
+
+### 100. Best practices for AWS DevOps engineers?
+
+* Infrastructure as Code
+* Automation
+* Monitoring
+* Security
+* Cost optimization
+* High availability
